@@ -331,6 +331,16 @@
     <Content Include="Views\Laptop\getCompany.cshtml" />
     <Content Include="Views\Laptop\Index.cshtml" />
     <Content Include="Views\Laptop\getCPU.cshtml" />
+    <Content Include="Views\Laptop\getScreenResolution.cshtml" />
+    <Content Include="Views\Laptop\getTypeName.cshtml" />
+    <Content Include="Views\Laptop\getMemory.cshtml" />
+    <Content Include="Views\Laptop\getGPU.cshtml" />
+    <Content Include="Views\Laptop\getOS.cshtml" />
+    <Content Include="Views\Laptop\getInches.cshtml" />
+    <Content Include="Views\Laptop\getSpeed.cshtml" />
+    <Content Include="Views\Laptop\getWeight.cshtml" />
+    <Content Include="Views\Laptop\getPriceLow.cshtml" />
+    <Content Include="Views\Laptop\getPriceHigh.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
