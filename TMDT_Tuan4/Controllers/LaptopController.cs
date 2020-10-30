@@ -74,5 +74,10 @@ namespace TMDT_Tuan4.Controllers
             var ListPriceHigh = db.laptops.GroupBy(l => l.Price_euros).Select(l => l.Key);
             return PartialView(ListPriceHigh);
         }
+        public ActionResult getRam()
+        {
+            var ListRam = db.laptops.GroupBy(l => l.Ram).Select(l => l.Key);
+            return PartialView(ListRam);
+        }
     }
 }

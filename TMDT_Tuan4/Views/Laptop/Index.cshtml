@@ -27,6 +27,8 @@
 @{Html.RenderAction("getPriceLow", "Laptop"); }
 <br />
 @{Html.RenderAction("getPriceHigh", "Laptop"); }
+<br />
+@{Html.RenderAction("getRam", "Laptop"); }
 <input type="button" name="name" onclick="find();" value="Assign" />
 <ul id="laptop"></ul>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -188,6 +190,18 @@
                 }
                 else {
                     idString = idString + "_13-" + idPriceHigh[i].name;
+                }
+            }
+        }
+        //------------------------------------------------------------
+        var idRam = $('#9').find('input[type=checkbox]');
+        for (var i = 0; i < idRam.length; i++) {
+            if (idRam[i].checked) {
+                if (idString == "") {
+                    idString = "9-" + idRam[i].name;
+                }
+                else {
+                    idString = idString + "_9-" + idRam[i].name;
                 }
             }
         }
