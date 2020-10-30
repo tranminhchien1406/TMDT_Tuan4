@@ -9,7 +9,6 @@
 @{Html.RenderAction("getCPU", "Laptop"); }
 <input type="button" name="name" onclick="find();" value="Assign" />
 <ul id="laptop"></ul>
-<ul id="cpu"></ul>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script>
 
@@ -40,17 +39,7 @@
                 }
             }
         }
-        var idCPU = $('#6').find('input[type=checkbox]');
-        for (var i = 0; i < idCPU.length; i++) {
-            if (idCPU[i].checked) {
-                if (idString == "") {
-                    idString = "6-" + idCPU[i].name;
-                }
-                else {
-                    idString = idString + "_6-" + idCPU[i].name;
-                }
-            }
-        }
+        
         $.getJSON(uri + "/" + idString).done(function (data) {
             $.each(data, function (key, item) {
                 $('<li>', { text: formatItem(item) }).appendTo($('#laptop'));
