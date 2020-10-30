@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TMDT_Tuan4.Models.laptop>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@{Html.RenderAction("getCompany", "Laptop"); }
+<br />
+@{Html.RenderAction("getCPU", "Laptop"); }
+<input type="button" name="name" onclick="find();" value="Assign" />
+<ul id="laptop"></ul>
+<ul id="cpu"></ul>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+
+
+    var uri = "../../api/LaptopAPI"
+    $(document).ready(function () {
+        $.getJSON(uri).done(function (data) {
+            $.each(data, function (key, item) {
+                $('<li>', { text: formatItem(item) }).appendTo($('#laptop'));
+            });
+        });
+
+    });
+    function formatItem(item) {
+        return item.Product + ':' + item.ScreenResolution;
+    }
+    function find() {
+        $('#laptop').text('');
+        var idString = "";
+        var idCompany = $('#2').find('input[type=checkbox]');
+        for (var i = 0; i < idCompany.length; i++) {
+            if (idCompany[i].checked) {
+                if (idString == "") {
+                    idString = "2-" + idCompany[i].name;
+                }
+                else {
+                    idString = idString + "_2-" + idCompany[i].name;
+                }
+            }
+        }
+        var idCPU = $('#6').find('input[type=checkbox]');
+        for (var i = 0; i < idCPU.length; i++) {
+            if (idCPU[i].checked) {
+                if (idString == "") {
+                    idString = "6-" + idCPU[i].name;
+                }
+                else {
+                    idString = idString + "_6-" + idCPU[i].name;
+                }
+            }
+        }
+        $.getJSON(uri + "/" + idString).done(function (data) {
+            $.each(data, function (key, item) {
+                $('<li>', { text: formatItem(item) }).appendTo($('#laptop'));
+            });
+        }).fail(function (jqXHR,textStatus,err) {
+            $('#laptop').text('Error:' + err);
+        });
+
+    }
+</script> 
